@@ -1,6 +1,7 @@
 public class ParkingSpot {
     private final String id;
     private final SpotType spotType;
+    // we do not make the parkedVehicle field private as this field can be changed after creation of the parking spot as well`
     private Vehicle parkedVehicle;
     ParkingSpot(String id, SpotType spotType) {
         this.id = id;
@@ -25,14 +26,14 @@ public class ParkingSpot {
 
     public void park(Vehicle vehicle) {
         if (!isFree()) {
-            throw new IllegalStateException("Parking spot is occupied. Cannot park");
+            throw new IllegalStateException("Parking spot " + this.id + " is occupied. Cannot park");
         }
         this.parkedVehicle = vehicle;
     }
 
     public Vehicle unpark() {
         if (isFree()) {
-            throw new IllegalStateException("Parking spot is already free!");
+            throw new IllegalStateException("Parking spot" + this.id + " is already free!");
         }
         Vehicle v = this.parkedVehicle;
         this.parkedVehicle = null;
