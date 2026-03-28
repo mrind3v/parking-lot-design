@@ -1,0 +1,1 @@
+![UML Design](static/parking-lot-uml.png)
