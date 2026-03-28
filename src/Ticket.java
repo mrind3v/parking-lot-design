@@ -10,14 +10,56 @@ public class Ticket {
     // we do not make TicketStatus as private as we need to update the ticket object later
     // after creating it
     private TicketStatus ticketStatus;
-    Ticket(String id, Instant entryTime, String numberPlate, VehicleType vehicleType, String spotId, SpotType spotType, TicketStatus ticketStatus) {
-        this.id = id;
-        this.entryTime = Instant.now();
-        this.numberPlate = numberPlate;
-        this.vehicleType = vehicleType;
-        this.spotId = spotId;
-        this.spotType = spotType;
-        this.ticketStatus = ticketStatus;
+    private Ticket(Builder builder) {
+        this.id = builder.id;
+        this.entryTime = builder.entryTime==null ? Instant.now() : builder.entryTime;
+        this.numberPlate = builder.numberPlate;
+        this.vehicleType = builder.vehicleType;
+        this.spotId = builder.spotId;
+        this.spotType = builder.spotType;
+        this.ticketStatus = builder.ticketStatus;
+    }
+
+    public static class Builder {
+        private String id;
+        private Instant entryTime;
+        private String numberPlate;
+        private VehicleType vehicleType;
+        private String spotId;
+        private SpotType spotType;
+        private TicketStatus ticketStatus;
+
+        public Builder(String id) {
+            this.id = id;
+        }
+
+        public Builder entryTime(Instant entryTime) {
+            this.entryTime = entryTime;
+            return this;
+        }
+        public Builder numberPlate(String numberPlate) {
+            this.numberPlate = numberPlate;
+            return this;
+        }
+        public Builder vehicleType(VehicleType type) {
+            this.vehicleType = type;
+            return this;
+        }
+        public Builder spotId(String spotId) {
+            this.spotId = spotId;
+            return this;
+        }
+        public Builder spotType(SpotType type) {
+            this.spotType = type;
+            return this;
+        }
+        public Builder ticketStatus(TicketStatus status) {
+            this.ticketStatus = ticketStatus;
+            return this;
+        }
+        public Ticket build() {
+            return new Ticket(this);
+        }
     }
 
     public String getId() {
@@ -46,9 +88,5 @@ public class Ticket {
 
     public TicketStatus getTicketStatus() {
         return ticketStatus;
-    }
-
-    public void setTicketStatus(TicketStatus status) {
-        this.ticketStatus = status
     }
 }
