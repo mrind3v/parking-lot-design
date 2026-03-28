@@ -1,7 +1,7 @@
 public class SimpleSpotAllocationStrategy implements SpotAllocationStrategy{
 
     @Override
-    public Ticket findSpot(VehicleType type) {
+    public ParkingSpot findSpot(VehicleType type) {
         return null;
     }
 }

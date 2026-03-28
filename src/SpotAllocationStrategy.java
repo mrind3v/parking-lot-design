@@ -1,3 +1,3 @@
 public interface SpotAllocationStrategy {
-    Ticket findSpot(VehicleType type);
+    ParkingSpot findSpot(VehicleType type);
 }
