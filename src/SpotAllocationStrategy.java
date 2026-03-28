@@ -1,3 +1,6 @@
+import java.util.List;
+
 public interface SpotAllocationStrategy {
-    ParkingSpot findSpot(VehicleType type);
+    // spot allocation strategy for every floor
+    ParkingSpot findSpot(List<Floor> floors, VehicleType type);
 }

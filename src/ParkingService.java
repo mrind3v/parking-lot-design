@@ -12,7 +12,7 @@ public class ParkingService {
     }
 
     public Ticket park(Vehicle vehicle) {
-        ParkingSpot spot = spotAllocationStrategy.findSpot(vehicle.getVehicleType());
+        ParkingSpot spot = spotAllocationStrategy.findSpot(this.floors, vehicle.getVehicleType());
         if (spot==null) {
             System.out.println("No spot available...");
             return null;
